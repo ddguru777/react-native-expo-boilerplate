@@ -1,6 +1,8 @@
 import axios from "axios/index";
+import _ from "lodash";
 import humps from "humps";
-import { AUTH_URL } from "../constants/apis";
+
+import { AUTH_URL, UNSPLASH_API_URL, UNSPLASH_API_ACCESS_KEY } from "../constants/apis";
 
 const authClient = (baseUrl) => (
   axios.create({
@@ -15,10 +17,36 @@ const authClient = (baseUrl) => (
   })
 );
 
+const unsplashClient = (baseUrl, apiKey) => (
+  axios.create({
+    baseURL: baseUrl,
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      "Authorization": `Client-ID ${apiKey}`
+    },
+    transformResponse: [
+      rawdata => {
+        const CONCERN_ATTRIBS = ['id', 'username', 'name', 'profile_image']
+        const data = JSON.parse(rawdata);
+        // TODO: parse error handling
+        if (data.errors) {
+          throw new Error(data.errors.toString());
+        }
+
+        return data.results.map(result => _.pick(result, CONCERN_ATTRIBS))
+      }
+    ],
+  })
+);
+
 const clients = {
   default: {
     client: authClient(AUTH_URL),
   },
+  unsplash: {
+    client: unsplashClient(UNSPLASH_API_URL, UNSPLASH_API_ACCESS_KEY)
+  }
 };
 
 export default clients;
