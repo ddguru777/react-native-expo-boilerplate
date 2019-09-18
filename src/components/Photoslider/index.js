@@ -4,7 +4,7 @@ import {
 import { StatusBar, Platform } from "react-native";
 import styles from "./styles";
 
-export default class Home extends Component {
+export default class Photoslider extends Component {
   render() {
     return (
       <Container style={styles.container}>
@@ -20,7 +20,7 @@ export default class Home extends Component {
             paddingBottom: Platform.OS === 'ios' ? 0 : 0, }}>
           <Left style={styles.headerLeft}>
             <Button transparent onPress={() => this.props.navigation.openDrawer()}>
-              <Icon name="menu" style={{ color: "#000" }}/>
+              <Icon name="arrow-back" style={{ color: "#000" }}/>
             </Button>
           </Left>
           <Body style={styles.headerBody}>
@@ -29,10 +29,7 @@ export default class Home extends Component {
           <Right style={styles.headerRight}/>
         </Header>
         <Content>
-          <Text style={{ alignSelf: "center", marginTop: 10}}>LokiShare 1.0.0</Text>
-          <Button block onPress={() => this.props.onPressPhotoslider()} style={styles.buttonLogin}>
-            <Text uppercase={false} style={styles.textLogin}>Photoslider</Text>
-          </Button>
+          <Text uppercase={false} style={styles.textLogin}>Photoslider</Text>
         </Content>
       </Container>
     );

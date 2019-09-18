@@ -5,7 +5,7 @@
 
 - Axios, Reux-thunk
 - UI/UX Design from native base theme
-- Redux for state management
+- Redux Form
 - React Navigation for simple navigation
 - Disk-persisted application state caching
 - Latest dependencies

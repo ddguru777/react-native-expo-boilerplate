@@ -16,7 +16,7 @@ export default class Login extends Component {
           <Image source={logo} style={styles.logo}/>
           <Text style={styles.textLogo}>github.com/ddguru777</Text>
           <Text style={styles.textLogo}>This is non-functional login.</Text>
-          <Text style={styles.textLogo}>Type in demo@gmail.com to pass this page.</Text>
+          <Text style={styles.textLogo}>Type in "demo@gmail.com" to pass this page.</Text>
           <View style={styles.containerForm}>
             <View style={styles.contentForm}>
               {this.props.loginForm}
