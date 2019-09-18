@@ -115,18 +115,15 @@ export default class Home extends Component {
           </Body>
           <Right style={styles.headerRight}/>
         </Header>
-<<<<<<< HEAD
-        <Content>
-          <Text style={{ alignSelf: "center", marginTop: 10}}>LokiShare 1.0.0</Text>
+          {/* <Text style={{ alignSelf: "center", marginTop: 10}}>LokiShare 1.0.0</Text>
           <Button block onPress={() => this.props.onPressPhotoslider()} style={styles.buttonLogin}>
             <Text uppercase={false} style={styles.textLogin}>Photoslider</Text>
-          </Button>
-=======
-        {this.renderSearchBar()}
-        <Content>  
-          {this.renderContent()}
->>>>>>> 05e370bcf2b6439a4bbaf7c3af7ec805c284c089
-        </Content>
+          </Button> */}
+          
+          {this.renderSearchBar()}
+          <Content>  
+            {this.renderContent()}
+          </Content>
       </Container>
     );
   }
