@@ -26,6 +26,10 @@ export default class Home extends Component {
     searchFn(searchTerm);
   }
 
+  handleUserPress = (userData) => {
+    this.props.navigation.navigate("Userprofile", userData);
+  }
+
   renderSearchBar() {
     const {searchTerm} = this.state;
 
@@ -34,19 +38,48 @@ export default class Home extends Component {
         noShadow
         searchBar
         rounded
+        autoCorrect='false'
         style={{ 
           borderBottomWidth: 1,
           height: 70,
           paddingTop: 0,
           paddingBottom: 0, }}
       >
-        <Item>
+        <Item style={{flex: 0.7}}>
+          <Icon
+              name={'ios-search'}
+              ios={'ios-search'}
+              android={'md-search'}
+          />
+          <Input
+            onChangeText={this.handleSearchChange}
+            onSubmitEditing={() => this.search()}
+            placeholder="Search"
+            autoCorrect={false}
+            autoFocus={true}
+            maxLength={200}
+            value={searchTerm}
+            style={{ color: '#fff' }}
+          />
+          <Icon name='ios-people'
+                ios={'ios-people'}
+                android={'md-people'}
+          />
+        </Item>
+        <Right style={{flex: 0.3}}>
+          {/* { renderSearchButton() } */}
+          <Button transparent onPress={this.handleSearchPress }>
+            <Text>Search</Text>
+          </Button>
+        </Right>
+
+        {/* <Item>
           <Icon name="ios-search" />
           <Input placeholder="Search" style={{ color: '#fff' }} onChangeText={this.handleSearchChange} value={searchTerm} />
         </Item>
         <Button transparent onPress={this.handleSearchPress}>
           <Text>Search</Text>
-        </Button>
+        </Button> */}
       </Header>
     )
   }
@@ -76,7 +109,12 @@ export default class Home extends Component {
 
     return (
       <List dataArray={userList} renderRow={({ id, profile_image, username, name}) => 
-        <ListItem thumbnail key={id}>
+        <ListItem 
+          button={true} 
+          key={id} 
+          onPress={() => {this.handleUserPress({id, profile_image, username, name})}} 
+          avatar
+        >
           <Left>
             <Thumbnail source={{ uri: profile_image.medium }} />
           </Left>
@@ -115,11 +153,6 @@ export default class Home extends Component {
           </Body>
           <Right style={styles.headerRight}/>
         </Header>
-          {/* <Text style={{ alignSelf: "center", marginTop: 10}}>LokiShare 1.0.0</Text>
-          <Button block onPress={() => this.props.onPressPhotoslider()} style={styles.buttonLogin}>
-            <Text uppercase={false} style={styles.textLogin}>Photoslider</Text>
-          </Button> */}
-          
           {this.renderSearchBar()}
           <Content>  
             {this.renderContent()}

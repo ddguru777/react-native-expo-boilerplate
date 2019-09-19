@@ -1,10 +1,10 @@
 {
-  "devToolsPort": 19002,
+  "devToolsPort": 19003,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 39186,
-  "expoServerNgrokUrl": "https://t6-zur.anonymous.lokishare.exp.direct",
-  "packagerNgrokUrl": "https://packager.t6-zur.anonymous.lokishare.exp.direct",
-  "ngrokPid": 39204,
+  "packagerPid": 53579,
+  "expoServerNgrokUrl": "https://tb-7vd.anonymous.lokishare.exp.direct",
+  "packagerNgrokUrl": "https://packager.tb-7vd.anonymous.lokishare.exp.direct",
+  "ngrokPid": 53588,
   "webpackServerPort": null
 }

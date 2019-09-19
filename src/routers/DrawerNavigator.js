@@ -1,16 +1,14 @@
 import React from "react";
 import { createDrawerNavigator } from "react-navigation-drawer";
 import SideBar from "../containers/SlidebarContainer";
-import Home from "../containers/HomeContainer";
-import Photoslider from "../containers/PhotosliderContainer";
+import Usernavi from "./UserNavigator";
 
 export default createDrawerNavigator(
   {
-    Home: { screen: Home },
-    Photoslider: { screen: Photoslider },
+    Usernavi: { screen: Usernavi }
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "Usernavi",
     contentComponent: props => <SideBar {...props} />
   }
 );

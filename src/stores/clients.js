@@ -34,7 +34,11 @@ const unsplashClient = (baseUrl, apiKey) => (
           throw new Error(data.errors.toString());
         }
 
-        return data.results.map(result => _.pick(result, CONCERN_ATTRIBS))
+        if (data.results) {
+          return data.results.map(result => _.pick(result, CONCERN_ATTRIBS))
+        } else {
+          return data;
+        }
       }
     ],
   })
